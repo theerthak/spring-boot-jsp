@@ -4,6 +4,10 @@ pipeline {
     tools {
         maven '3.8.5'
     }
+{
+paremeters{
+ 
+  string(Name: 'SERVER_IP' value: '34.207.190.115')
     
   stages {
         stage('Source') {
