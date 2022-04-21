@@ -6,7 +6,7 @@ pipeline {
     }
 parameters{
  
-  string(name: 'SERVER_IP', Value: '34.207.190.115')
+  string(name: 'SERVER_IP', defaultValue: '34.207.190.115')
 }
     
   stages {
