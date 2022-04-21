@@ -7,7 +7,8 @@ pipeline {
 {
 paremeters{
  
-  string(Name: 'SERVER_IP', defaultvalue: '34.207.190.115')
+  string(name: 'SERVER_IP', defaultValue: '34.207.190.115')
+}
     
   stages {
         stage('Source') {
