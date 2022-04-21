@@ -31,9 +31,7 @@ parameters{
                     version=$(perl -nle 'print "$1" if /<version>(v\\d+\\.\\d+\\.\\d+)<\\/version>/' pom.xml)
                     ssh root@${SERVER_IP} -p 2232 rm -rf /var/www/html/*
                     rsync -avzP -e 'ssh -p 2232' target/news-${version}.jar root@${SERVER_IP}:/var/www/html/
-                    ssh root@${SERVER_IP} -p 2232 cd /var/www/html/
-                    pwd
-                    java -jar -Dserver.port=8085 news-${version}.jar
+                    ssh root@${SERVER_IP} -p 2232 java -jar -Dserver.port=8085 /var/www/html/news-${version}.jar
 
                 '''
             }
