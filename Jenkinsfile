@@ -4,7 +4,6 @@ pipeline {
     tools {
         maven '3.8.5'
     }
-{
 paremeters{
  
   string(name: 'SERVER_IP', defaultValue: '34.207.190.115')
