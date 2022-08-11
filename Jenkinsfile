@@ -6,13 +6,14 @@ pipeline {
     }
 parameters{
  
-  string(name: 'SERVER_IP', defaultValue: '34.207.190.115')
+  string(name: 'SERVER_IP', defaultValue: '65.0.85.217')
 }
     
   stages {
         stage('Source') {
             steps {
-                git branch: 'main', credentialsId: 'c2d5c505-d1a9-4995-a724-b8d65dab8007', url: 'https://github.com/theerthak/spring-boot-jsp.git'
+                 git branch: 'main', credentialsId: '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', url: 'https://github.com/theerthak/spring-boot-jsp.git'
+
             }
         }
         stage('Test') {
@@ -29,9 +30,9 @@ parameters{
             steps {
                 sh '''
                     version=$(perl -nle 'print "$1" if /<version>(v\\d+\\.\\d+\\.\\d+)<\\/version>/' pom.xml)
-                    ssh root@${SERVER_IP} -p 2232 rm -rf /var/www/html/*
-                    rsync -avzP -e 'ssh -p 2232' target/news-${version}.jar root@${SERVER_IP}:/var/www/html/
-                    ssh root@${SERVER_IP} -p 2232 java -jar -Dserver.port=8085 /var/www/html/news-${version}.jar
+                    ssh root@${SERVER_IP} -p 22 rm -rf /var/www/html/*
+                    rsync -avzP -e 'ssh -p 22' target/news-${version}.jar root@${SERVER_IP}:/var/www/html/
+                    ssh root@${SERVER_IP} -p 22 java -jar -Dserver.port=8085 /var/www/html/news-${version}.jar
 
                 '''
             }
